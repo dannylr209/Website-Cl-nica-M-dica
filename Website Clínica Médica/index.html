@@ -1,0 +1,802 @@
+<!-- Centro Médico Bienestar - Plataforma Integral unificada -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        @layer base {
+            html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+            body { overscroll-behavior: none; }
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8f9ff; }
+        ::-webkit-scrollbar-thumb { background: #c2c7cf; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #73777f; }
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = { 
+            darkMode: "class", 
+            theme: { 
+                extend: { 
+                    "colors": { 
+                        "secondary": "#006c49", 
+                        "primary-fixed-dim": "#a3caf6", 
+                        "outline": "#73777f", 
+                        "surface-container-lowest": "#ffffff", 
+                        "surface-dim": "#cbdbf5", 
+                        "surface-bright": "#f8f9ff", 
+                        "on-tertiary-container": "#49a9ef", 
+                        "error": "#ba1a1a", 
+                        "primary-fixed": "#d0e4ff", 
+                        "on-tertiary-fixed": "#001d31", 
+                        "on-primary": "#ffffff", 
+                        "on-primary-container": "#7fa6d0", 
+                        "on-secondary-container": "#00714c", 
+                        "inverse-primary": "#a3caf6", 
+                        "on-background": "#0b1c30", 
+                        "on-primary-fixed-variant": "#1f496f", 
+                        "background": "#f8f9ff", 
+                        "on-secondary": "#ffffff", 
+                        "surface-container-high": "#dce9ff", 
+                        "surface": "#f8f9ff", 
+                        "primary": "#002541", 
+                        "on-secondary-fixed-variant": "#005236", 
+                        "outline-variant": "#c2c7cf", 
+                        "surface-container-low": "#eff4ff", 
+                        "on-tertiary-fixed-variant": "#004b73", 
+                        "on-tertiary": "#ffffff", 
+                        "secondary-fixed": "#81f9c1", 
+                        "surface-tint": "#3a6188", 
+                        "inverse-surface": "#213145", 
+                        "on-secondary-fixed": "#002113", 
+                        "tertiary-fixed": "#cce5ff", 
+                        "on-surface-variant": "#42474e", 
+                        "on-error-container": "#93000a", 
+                        "inverse-on-surface": "#eaf1ff", 
+                        "primary-container": "#0b3b60", 
+                        "secondary-container": "#7ef6be", 
+                        "surface-container-highest": "#d3e4fe", 
+                        "tertiary": "#00263d", 
+                        "error-container": "#ffdad6", 
+                        "on-surface": "#0b1c30", 
+                        "on-primary-fixed": "#001d35", 
+                        "secondary-fixed-dim": "#63dca6", 
+                        "on-error": "#ffffff", 
+                        "surface-container": "#e5eeff", 
+                        "tertiary-container": "#003c5e", 
+                        "tertiary-fixed-dim": "#93ccff", 
+                        "surface-variant": "#d3e4fe" 
+                    }, 
+                    "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, 
+                    "spacing": { "gutter": "2rem", "space-lg": "1.5rem", "space-xl": "2rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem", "margin": "2rem" }, 
+                    "fontFamily": { "label-sm": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-md": ["Inter"], "title-md": ["Plus Jakarta Sans"], "label-md": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-lg": ["Inter"], "body-lg": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "body-sm": ["Inter"] }, 
+                    "fontSize": { 
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], 
+                        "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], 
+                        "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], 
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], 
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], 
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" }], 
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }], 
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], 
+                        "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], 
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], 
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], 
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], 
+                        "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }] 
+                    } 
+                } 
+            } 
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+    
+    <!-- HEADER GLOBAL -->
+    <header class="fixed top-0 left-0 right-0 w-full z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+        <div class="bg-primary text-on-primary">
+            <div class="max-w-7xl mx-auto px-gutter h-10 flex items-center justify-between font-label-sm text-label-sm">
+                <div class="flex items-center gap-space-lg">
+                    <div class="hidden sm:flex items-center gap-space-xs text-primary-fixed">
+                        <span class="material-symbols-outlined text-[16px]">schedule</span>
+                        <span>Lun - Sáb: 7:00 - 20:00</span>
+                    </div>
+                    <div class="hidden md:flex items-center gap-space-xs text-primary-fixed">
+                        <span class="material-symbols-outlined text-[16px]">location_on</span>
+                        <span>Zona 10, Ciudad de Guatemala</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-space-md ml-auto">
+                    <a class="inline-flex items-center gap-space-xs bg-error text-on-error px-space-md py-1 rounded-full font-label-md text-label-md transition-all duration-200 hover:bg-on-error-container hover:text-on-error shadow-[0_4px_12px_0_rgba(220,38,38,0.25)]" href="tel:+50223456789">
+                        <span class="material-symbols-outlined text-[15px]">e911_emergency</span>
+                        <span>Emergencias 24/7: +502 2345-6789</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-surface/95 backdrop-blur-xl">
+            <div class="h-20 max-w-7xl mx-auto px-gutter flex items-center justify-between gap-space-lg">
+                <div class="flex items-center gap-space-md shrink-0 cursor-pointer" onclick="switchView('inicio')">
+                    <img alt="Logo Centro Médico Bienestar" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyTM9w_qgK4hYEtlkdog2Weoq2QAhdQZCjsGGupC7xNQe7bnO-kPyh1tHzttyYwEN6CPMzdidvCtX8lA2G7lkSx72J1g0WY7E4P63j7Dl_l2f9Kt-9C_m-plZpEH9nOPLCP_EmRLMtgXZR_6c-XMFYZmw1L3cbAgxBkOpE6QDEB1_sOx0nmWpj9K9l7Eq55VhEI6p3zOHJ8ehKz5Lsm7CkZhU6cIG9UESEt0VZUT6xrsPwuwyX8vsV2A"/>
+                    <span class="font-title-md text-title-md text-primary hidden lg:inline-block">Centro Médico Bienestar</span>
+                </div>
+                <nav class="hidden xl:flex items-center gap-space-xs">
+                    <a class="nav-link px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-view="inicio" href="#">Inicio</a>
+                    <a class="nav-link px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-view="especialidades" href="#">Especialidades</a>
+                    <a class="nav-link px-space-md py-space-sm rounded-lg transition-colors text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-label-lg text-label-lg" data-view="nuestro-equipo" href="#">Nuestro Equipo</a>
+                    <a class="nav-link px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-view="servicios" href="#">Servicios</a>
+                    <a class="nav-link px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-view="citas" href="#">Citas</a>
+                    <a class="nav-link px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-view="blog-salud" href="#">Blog Salud</a>
+                    <a class="nav-link px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-view="contacto" href="#">Contacto</a>
+                </nav>
+                <div class="flex items-center gap-space-md shrink-0">
+                    <button onclick="switchView('citas')" class="hidden sm:inline-flex items-center justify-center bg-secondary text-on-secondary hover:bg-on-secondary-container hover:text-on-secondary font-label-lg text-label-lg px-space-lg h-11 rounded-lg transition-colors shadow-[0_1px_3px_0_rgba(11,59,96,0.08)]">Agendar Cita</button>
+                    <div class="flex items-center gap-space-sm pl-space-xs">
+                        <img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-secondary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuzpL2Fm-e9HfDYwFm9dhhs5y8s5Y-MhDOhwdWqQ_B0ujdf5jvDK2vEXPGERi0SF8nnE5SMqGYUiFTNmFl_1kUoQ32tYWg_mKb0IAfj8Ggtz_yURb8ynezD1iV-wUP2C_nCBrhs9_SAiDkqoqL8IuufOU1MDoa0xXNS346cmum6BGnFLD0ATxCqViBUka9RXlslT1Yb2PrAD7r7KVjSfvg1XCMSLb8Ot_ORSWRc4LddI7KNtARbMDrRg"/>
+                        <div class="hidden md:flex flex-col text-left">
+                            <span class="font-label-md text-label-md text-on-surface leading-tight">Portal Paciente</span>
+                            <span class="font-label-sm text-label-sm text-secondary">Mi Expediente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL DE VISTAS -->
+    <main class="w-full pt-[120px] bg-background min-h-screen">
+
+        <!-- 1. VISTA: INICIO -->
+        <section id="view-inicio" class="view-section">
+            <div class="max-w-7xl mx-auto px-gutter py-space-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+                    <div class="lg:col-span-7 flex flex-col gap-space-md">
+                        <span class="w-max px-space-md py-1 rounded-full bg-secondary/10 text-secondary font-label-md text-label-md">Excelencia Médica en Guatemala</span>
+                        <h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">Tu salud y bienestar en las mejores manos</h1>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant">Atención médica integral con tecnología de punta, diagnósticos precisos y calidez humana en Zona 10.</p>
+                        <div class="flex flex-wrap gap-space-md mt-space-sm">
+                            <button onclick="switchView('citas')" class="px-space-xl py-3 rounded-lg bg-secondary text-on-secondary font-label-lg text-label-lg hover:bg-on-secondary-container transition-colors">Reservar una Cita</button>
+                            <button onclick="switchView('nuestro-equipo')" class="px-space-xl py-3 rounded-lg bg-surface-container text-primary font-label-lg text-label-lg hover:bg-surface-dim transition-colors">Conocer Especialistas</button>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 bg-surface-container-low p-space-xl rounded-2xl shadow-sm border border-outline-variant/20 flex flex-col gap-space-md">
+                        <h3 class="font-headline-sm text-headline-sm text-primary">Acceso Rápido</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Consulta servicios destacados o explora especialidades directamente desde aquí.</p>
+                        <div class="grid grid-cols-2 gap-space-sm mt-space-sm">
+                            <button onclick="switchView('especialidades')" class="p-space-md bg-surface-container-lowest rounded-xl text-left hover:shadow-md transition-shadow">
+                                <span class="material-symbols-outlined text-secondary text-[28px] mb-2">stethoscope</span>
+                                <h4 class="font-title-md text-title-md text-primary">Especialidades</h4>
+                            </button>
+                            <button onclick="switchView('servicios')" class="p-space-md bg-surface-container-lowest rounded-xl text-left hover:shadow-md transition-shadow">
+                                <span class="material-symbols-outlined text-secondary text-[28px] mb-2">local_hospital</span>
+                                <h4 class="font-title-md text-title-md text-primary">Servicios 24/7</h4>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. VISTA: ESPECIALIDADES -->
+        <section id="view-especialidades" class="view-section">
+            <div class="max-w-7xl mx-auto px-gutter py-space-xl">
+                <div class="max-w-2xl mb-space-xl">
+                    <span class="w-max px-space-md py-1 rounded-full bg-surface-container text-primary font-label-md text-label-md mb-space-sm inline-block">Áreas Clínicas</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Nuestras Especialidades Médicas</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mt-space-sm">Contamos con departamentos especializados para atender cada aspecto de tu salud y la de tu familia.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+                    <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-lg bg-surface-container text-secondary flex items-center justify-center mb-space-md">
+                                <span class="material-symbols-outlined text-[24px]">medical_services</span>
+                            </div>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-2">Medicina Interna</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Prevención, diagnóstico y tratamiento integral de enfermedades en adultos, con enfoque en padecimientos crónicos.</p>
+                        </div>
+                        <button onclick="switchView('nuestro-equipo')" class="mt-space-lg text-secondary font-label-md text-label-md flex items-center gap-1 hover:underline">Ver médicos de esta área <span class="material-symbols-outlined text-[16px]">arrow_forward</span></button>
+                    </div>
+                    <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-lg bg-surface-container text-secondary flex items-center justify-center mb-space-md">
+                                <span class="material-symbols-outlined text-[24px]">cardiology</span>
+                            </div>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-2">Cardiología</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Estudio, prevención y tratamiento de las afecciones del corazón y del aparato circulatorio mediante tecnología diagnóstica avanzada.</p>
+                        </div>
+                        <button onclick="switchView('nuestro-equipo')" class="mt-space-lg text-secondary font-label-md text-label-md flex items-center gap-1 hover:underline">Ver médicos de esta área <span class="material-symbols-outlined text-[16px]">arrow_forward</span></button>
+                    </div>
+                    <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-lg bg-surface-container text-secondary flex items-center justify-center mb-space-md">
+                                <span class="material-symbols-outlined text-[24px]">child_care</span>
+                            </div>
+                            <h3 class="font-headline-sm text-headline-sm text-primary mb-2">Pediatría Integral</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Cuidado completo de la salud infantil desde el nacimiento hasta la adolescencia, incluyendo inmunizaciones y seguimiento del desarrollo.</p>
+                        </div>
+                        <button onclick="switchView('nuestro-equipo')" class="mt-space-lg text-secondary font-label-md text-label-md flex items-center gap-1 hover:underline">Ver médicos de esta área <span class="material-symbols-outlined text-[16px]">arrow_forward</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. VISTA: NUESTRO EQUIPO (LA VISTA PRINCIPAL SOLICITADA) -->
+        <section id="view-nuestro-equipo" class="view-section">
+            <!-- Top Context Header -->
+            <div class="relative w-full bg-surface-container-lowest overflow-hidden border-b border-outline-variant/20">
+                <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-secondary/5 blur-3xl pointer-events-none"></div>
+                <div class="absolute left-1/3 -bottom-20 w-80 h-80 rounded-full bg-primary/5 blur-2xl pointer-events-none"></div>
+                <div class="max-w-7xl mx-auto px-gutter py-space-xl relative z-10">
+                    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-xl">
+                        <div class="max-w-2xl">
+                            <div class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-surface-container text-primary font-label-md text-label-md mb-space-sm shadow-sm">
+                                <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                <span>Directorio Médico Certificado · Zona 10</span>
+                            </div>
+                            <h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">Especialistas dedicados a tu salud integral</h1>
+                            <p class="font-body-lg text-body-lg text-on-surface-variant mt-space-sm">Un cuerpo médico colegiado, multidisciplinario y de trayectoria internacional, respaldado por la más alta tecnología diagnóstica en Guatemala.</p>
+                        </div>
+                        <!-- Quick Metrics Counter -->
+                        <div class="flex items-center gap-space-lg bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+                            <div class="flex flex-col">
+                                <span class="font-headline-md text-headline-md text-primary font-bold">48+</span>
+                                <span class="font-label-sm text-label-sm text-on-surface-variant">Médicos Especialistas</span>
+                            </div>
+                            <div class="w-px h-10 bg-outline-variant/40"></div>
+                            <div class="flex flex-col">
+                                <span class="font-headline-md text-headline-md text-secondary font-bold">100%</span>
+                                <span class="font-label-sm text-label-sm text-on-surface-variant">Colegiados Activos</span>
+                            </div>
+                            <div class="w-px h-10 bg-outline-variant/40"></div>
+                            <div class="flex flex-col">
+                                <span class="font-headline-md text-headline-md text-primary font-bold">15 min</span>
+                                <span class="font-label-sm text-label-sm text-on-surface-variant">Triage Promedio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Controls Strip -->
+                    <div class="bg-surface-container p-space-md sm:p-space-lg rounded-xl shadow-sm">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-space-md items-center">
+                            <!-- Search input -->
+                            <div class="lg:col-span-4 relative">
+                                <span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+                                <input class="w-full h-11 pl-11 pr-space-md bg-surface-container-lowest rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-secondary/40 shadow-sm" id="search-input" placeholder="Buscar por nombre o palabra clave..." type="text"/>
+                            </div>
+                            <!-- Specialty filter -->
+                            <div class="lg:col-span-3 relative">
+                                <span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">stethoscope</span>
+                                <select class="w-full h-11 pl-11 pr-space-lg bg-surface-container-lowest rounded-lg font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:ring-2 focus:ring-secondary/40 shadow-sm cursor-pointer" id="specialty-filter">
+                                    <option value="all">Todas las Especialidades</option>
+                                    <option value="interna">Medicina Interna</option>
+                                    <option value="cardio">Cardiología y Ecocardiografía</option>
+                                    <option value="pediatria">Pediatría Integral</option>
+                                    <option value="trauma">Traumatología y Ortopedia</option>
+                                </select>
+                                <span class="material-symbols-outlined absolute right-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px] pointer-events-none">expand_more</span>
+                            </div>
+                            <!-- Day filter -->
+                            <div class="lg:col-span-3 relative">
+                                <span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">calendar_today</span>
+                                <select class="w-full h-11 pl-11 pr-space-lg bg-surface-container-lowest rounded-lg font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:ring-2 focus:ring-secondary/40 shadow-sm cursor-pointer" id="day-filter">
+                                    <option value="all">Cualquier Día de Atención</option>
+                                    <option value="lun">Lunes</option>
+                                    <option value="mar">Martes</option>
+                                    <option value="mie">Miércoles</option>
+                                    <option value="jue">Jueves</option>
+                                    <option value="vie">Viernes</option>
+                                    <option value="sab">Sábado</option>
+                                </select>
+                                <span class="material-symbols-outlined absolute right-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px] pointer-events-none">expand_more</span>
+                            </div>
+                            <!-- Clear/Count button action -->
+                            <div class="lg:col-span-2 flex items-center justify-end">
+                                <button class="w-full h-11 inline-flex items-center justify-center gap-space-xs bg-surface-container-high hover:bg-surface-dim text-primary rounded-lg font-label-md text-label-md transition-colors" id="reset-filters">
+                                    <span class="material-symbols-outlined text-[18px]">filter_alt_off</span>
+                                    <span>Limpiar Filtros</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Filter tags row -->
+                        <div class="flex flex-wrap items-center gap-space-xs mt-space-md pt-space-sm border-t border-outline-variant/20 font-label-sm text-label-sm">
+                            <span class="text-on-surface-variant mr-space-xs">Filtros rápidos:</span>
+                            <button class="quick-chip px-space-md py-1 rounded-full bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary shadow-sm transition-all" data-specialty="interna">Medicina Preventiva</button>
+                            <button class="quick-chip px-space-md py-1 rounded-full bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary shadow-sm transition-all" data-specialty="cardio">Salud Cardiovascular</button>
+                            <button class="quick-chip px-space-md py-1 rounded-full bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary shadow-sm transition-all" data-specialty="pediatria">Atención Infantil</button>
+                            <button class="quick-chip px-space-md py-1 rounded-full bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary shadow-sm transition-all" data-specialty="trauma">Rehabilitación y Cirugía</button>
+                            <span class="ml-auto font-label-md text-label-md text-secondary font-semibold" id="results-count">Mostrando 3 doctores</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctor Cards Grid Section -->
+            <div class="max-w-7xl mx-auto px-gutter py-space-xl w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg" id="doctors-container">
+                    
+                    <!-- Doctor 1: Dra. Elena Morales -->
+                    <article class="doctor-card group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-days="lun,mar,mie,jue,vie,sab" data-name="elena morales" data-specialty="interna">
+                        <div class="p-space-lg flex flex-col sm:flex-row gap-space-lg">
+                            <div class="relative shrink-0 flex flex-col items-center">
+                                <div class="w-36 h-44 sm:w-36 sm:h-48 rounded-xl overflow-hidden bg-surface-container shadow-sm relative">
+                                    <img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtAiEJGNHHSzhAEaYPAitNHx6bSvD-DGO9pm9mXhUS3vJQ_uEmozaGzAPJ5PkfxfxR-K80_ulhHx-LauJrulqKWL9wTe9ulWvf7J9WW0OcxG0zsidf3QD-hN3rRarDulsLqgvasgzikHK9vc9RLsUMoXtRIH7RbM2LOASSWSqGLN1RpMfsGL88SsoDOLS6fF0oqOAifgd40tsntOnAweOBEsmvrzwzaMz_z71K6VBeqkTmeQE2V97KPw" alt="Dra. Elena Morales"/>
+                                    <div class="absolute bottom-2 left-2 bg-secondary text-on-secondary px-2 py-0.5 rounded font-label-sm text-label-sm shadow-sm flex items-center gap-1">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-pulse"></span>
+                                        <span>Disponible Hoy</span>
+                                    </div>
+                                </div>
+                                <span class="font-label-sm text-label-sm text-outline mt-space-xs font-mono">Col. Med. 4,512</span>
+                            </div>
+                            <div class="flex-1 min-w-0 flex flex-col">
+                                <div class="flex items-start justify-between gap-space-sm mb-space-xs">
+                                    <span class="px-space-md py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold">Medicina Interna</span>
+                                    <div class="flex items-center gap-1 text-secondary font-label-md text-label-md font-bold">
+                                        <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span>4.9</span>
+                                        <span class="text-outline font-normal">(128)</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">Dra. Elena Morales</h3>
+                                <p class="font-label-md text-label-md text-on-surface-variant font-medium mt-0.5">USAC · Fellowship Mayo Clinic (Rochester, MN)</p>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm line-clamp-3">Especialista en prevención y manejo de patologías metabólicas complejas, diabetes tipo 2 y chequeos preventivos integrales con enfoque preventivo holístico y medicina de precisión.</p>
+                                <div class="mt-space-md bg-surface-container-low rounded-lg p-space-sm">
+                                    <div class="text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 mb-1">
+                                        <span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
+                                        <span>Horarios de Consulta:</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-x-2 gap-y-1 font-body-sm text-body-sm text-on-surface">
+                                        <div class="flex items-center justify-between text-on-surface-variant">
+                                            <span>Lun - Vie:</span>
+                                            <span class="font-medium text-primary">08:00 - 14:00</span>
+                                        </div>
+                                        <div class="flex items-center justify-between text-on-surface-variant">
+                                            <span>Sábado:</span>
+                                            <span class="font-medium text-primary">09:00 - 12:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-space-lg py-space-sm bg-surface-container/50 flex items-center justify-between gap-space-md border-t border-outline-variant/10">
+                            <div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+                                <span class="material-symbols-outlined text-[18px] text-secondary">domain</span>
+                                <span>Clínica 402 · Torre Médica A</span>
+                            </div>
+                            <div class="flex items-center gap-space-sm">
+                                <a class="px-space-md py-2 rounded-lg font-label-md text-label-md text-primary hover:bg-surface-container-high transition-colors" href="#">Ver Perfil</a>
+                                <button onclick="switchView('citas')" class="px-space-md py-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md shadow-sm transition-all flex items-center gap-1">
+                                    <span>Agendar Cita</span>
+                                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Interactive Hover Curtain -->
+                        <div class="absolute inset-0 bg-primary/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto flex flex-col items-center justify-center p-space-xl text-center text-on-primary">
+                            <span class="w-12 h-12 rounded-full bg-surface-container-lowest/10 flex items-center justify-center text-secondary-fixed mb-space-sm">
+                                <span class="material-symbols-outlined text-[28px]">event_available</span>
+                            </span>
+                            <h4 class="font-headline-sm text-headline-sm text-on-primary mb-1">Dra. Elena Morales</h4>
+                            <p class="font-body-sm text-body-sm text-primary-fixed max-w-sm mb-space-lg">Próximo turno disponible: <strong>Hoy a las 11:30 AM</strong>. Consulta presencial y telemedicina disponible.</p>
+                            <div class="flex flex-col sm:flex-row gap-space-md w-full max-w-xs">
+                                <button onclick="switchView('citas')" class="flex-1 h-11 inline-flex items-center justify-center bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg shadow-md transition-all">Agendar Cita</button>
+                                <a class="flex-1 h-11 inline-flex items-center justify-center bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-on-primary font-label-lg text-label-lg rounded-lg transition-colors" href="#">Ver Perfil</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Doctor 2: Dr. Carlos Méndez -->
+                    <article class="doctor-card group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-days="mar,mie,jue" data-name="carlos mendez" data-specialty="cardio">
+                        <div class="p-space-lg flex flex-col sm:flex-row gap-space-lg">
+                            <div class="relative shrink-0 flex flex-col items-center">
+                                <div class="w-36 h-44 sm:w-36 sm:h-48 rounded-xl overflow-hidden bg-surface-container shadow-sm relative">
+                                    <img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSxxPUicY3AMbs7_9lFion8GQ2gIOfAuaLMsTDtj6uNQKPY6rm8IeA1Ai2NXSEJW2IZlqsESMAWnLo4lndBxxbNmkqq97WhuakXYY5yAPlvq38xDocaZfc_kCH__r5hZQhw7NgCawHwmC1_-Zzc-FlfTYKR45ZzODqGyCZecGv1HWVROItVOgTknUFhclnVdmS5AsJTqABA2G3zBH5gVFp2FjA8wQ5DjFG-VbwXaq1oh32uR1OaUuN7A" alt="Dr. Carlos Méndez"/>
+                                    <div class="absolute bottom-2 left-2 bg-secondary text-on-secondary px-2 py-0.5 rounded font-label-sm text-label-sm shadow-sm flex items-center gap-1">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+                                        <span>Cupos Mañana</span>
+                                    </div>
+                                </div>
+                                <span class="font-label-sm text-label-sm text-outline mt-space-xs font-mono">Col. Med. 3,890</span>
+                            </div>
+                            <div class="flex-1 min-w-0 flex flex-col">
+                                <div class="flex items-start justify-between gap-space-sm mb-space-xs">
+                                    <span class="px-space-md py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold">Cardiología &amp; Ecocardiografía</span>
+                                    <div class="flex items-center gap-1 text-secondary font-label-md text-label-md font-bold">
+                                        <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span>5.0</span>
+                                        <span class="text-outline font-normal">(210)</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">Dr. Carlos Méndez</h3>
+                                <p class="font-label-md text-label-md text-on-surface-variant font-medium mt-0.5">Instituto Nacional de Cardiología · 15 años de trayectoria</p>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm line-clamp-3">Pionero en ecocardiografía transesofágica y evaluación no invasiva de riesgo coronario. Especializado en insuficiencia cardíaca, arritmias complejas e hipertensión resistente.</p>
+                                <div class="mt-space-md bg-surface-container-low rounded-lg p-space-sm">
+                                    <div class="text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 mb-1">
+                                        <span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
+                                        <span>Horarios de Consulta:</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-x-2 gap-y-1 font-body-sm text-body-sm text-on-surface">
+                                        <div class="flex items-center justify-between text-on-surface-variant">
+                                            <span>Mar - Jue:</span>
+                                            <span class="font-medium text-primary">10:00 - 18:00</span>
+                                        </div>
+                                        <div class="flex items-center justify-between text-on-surface-variant">
+                                            <span>Pruebas Esfuerzo:</span>
+                                            <span class="font-medium text-primary">Cita Previa</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-space-lg py-space-sm bg-surface-container/50 flex items-center justify-between gap-space-md border-t border-outline-variant/10">
+                            <div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+                                <span class="material-symbols-outlined text-[18px] text-secondary">domain</span>
+                                <span>Unidad Cardiovascular · Piso 3</span>
+                            </div>
+                            <div class="flex items-center gap-space-sm">
+                                <a class="px-space-md py-2 rounded-lg font-label-md text-label-md text-primary hover:bg-surface-container-high transition-colors" href="#">Ver Perfil</a>
+                                <button onclick="switchView('citas')" class="px-space-md py-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md shadow-sm transition-all flex items-center gap-1">
+                                    <span>Agendar Cita</span>
+                                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Interactive Hover Curtain -->
+                        <div class="absolute inset-0 bg-primary/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto flex flex-col items-center justify-center p-space-xl text-center text-on-primary">
+                            <span class="w-12 h-12 rounded-full bg-surface-container-lowest/10 flex items-center justify-center text-secondary-fixed mb-space-sm">
+                                <span class="material-symbols-outlined text-[28px]">cardiology</span>
+                            </span>
+                            <h4 class="font-headline-sm text-headline-sm text-on-primary mb-1">Dr. Carlos Méndez</h4>
+                            <p class="font-body-sm text-body-sm text-primary-fixed max-w-sm mb-space-lg">Próximo turno disponible: <strong>Martes a las 10:00 AM</strong>. Incluye valoración ecocardiográfica digital de alta resolución.</p>
+                            <div class="flex flex-col sm:flex-row gap-space-md w-full max-w-xs">
+                                <button onclick="switchView('citas')" class="flex-1 h-11 inline-flex items-center justify-center bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg shadow-md transition-all">Agendar Cita</button>
+                                <a class="flex-1 h-11 inline-flex items-center justify-center bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-on-primary font-label-lg text-label-lg rounded-lg transition-colors" href="#">Ver Perfil</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Doctor 3: Dra. Sofía Valenzuela -->
+                    <article class="doctor-card group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-days="lun,mar,mie,jue,vie" data-name="sofia valenzuela" data-specialty="pediatria">
+                        <div class="p-space-lg flex flex-col sm:flex-row gap-space-lg">
+                            <div class="relative shrink-0 flex flex-col items-center">
+                                <div class="w-36 h-44 sm:w-36 sm:h-48 rounded-xl overflow-hidden bg-surface-container shadow-sm relative">
+                                    <img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-GVJhaeCvUixrJMj6OvbTIbufKwgApo01q09IYfUmwcSORCxVF6OpcxVbRNdMQKpFEx5ZuGcP84N9qWEi3dt09gCR-z5QputBRPgZ6UBHamJ3-sSpgWkYiLf228_L7B8M1TvEymOvWEmF7ut8AFbTzkS4i2Ujjf80AeMyVXh2HIRnhJJ9_mo20vcJcJDgwgWYfgSUzPkiBhqoNeWf0tSu6N7gqm8LXq967x8UEwOQVfBOkEKu4nzWtA" alt="Dra. Sofía Valenzuela"/>
+                                    <div class="absolute bottom-2 left-2 bg-secondary text-on-secondary px-2 py-0.5 rounded font-label-sm text-label-sm shadow-sm flex items-center gap-1">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-pulse"></span>
+                                        <span>Disponible Hoy</span>
+                                    </div>
+                                </div>
+                                <span class="font-label-sm text-label-sm text-outline mt-space-xs font-mono">Col. Med. 5,120</span>
+                            </div>
+                            <div class="flex-1 min-w-0 flex flex-col">
+                                <div class="flex items-start justify-between gap-space-sm mb-space-xs">
+                                    <span class="px-space-md py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold">Pediatría Integral</span>
+                                    <div class="flex items-center gap-1 text-secondary font-label-md text-label-md font-bold">
+                                        <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span>4.9</span>
+                                        <span class="text-outline font-normal">(184)</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">Dra. Sofía Valenzuela</h3>
+                                <p class="font-label-md text-label-md text-on-surface-variant font-medium mt-0.5">Certificación IBCLC · Máster en Neurodesarrollo Infantil (Navarra)</p>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm line-clamp-3">Cuidado y acompañamiento desde el nacimiento hasta la adolescencia. Asesora clínica en lactancia materna, esquemas de vacunación al día y control del crecimiento físico y emocional.</p>
+                                <div class="mt-space-md bg-surface-container-low rounded-lg p-space-sm">
+                                    <div class="text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 mb-1">
+                                        <span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
+                                        <span>Horarios de Consulta:</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-x-2 gap-y-1 font-body-sm text-body-sm text-on-surface">
+                                        <div class="flex items-center justify-between text-on-surface-variant">
+                                            <span>Lun - Vie:</span>
+                                            <span class="font-medium text-primary">09:00 - 16:00</span>
+                                        </div>
+                                        <div class="flex items-center justify-between text-on-surface-variant">
+                                            <span>Control Niño Sano:</span>
+                                            <span class="font-medium text-primary">Matutino</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-space-lg py-space-sm bg-surface-container/50 flex items-center justify-between gap-space-md border-t border-outline-variant/10">
+                            <div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+                                <span class="material-symbols-outlined text-[18px] text-secondary">child_care</span>
+                                <span>Clínica Pediatría 205 · Ala Infantil</span>
+                            </div>
+                            <div class="flex items-center gap-space-sm">
+                                <a class="px-space-md py-2 rounded-lg font-label-md text-label-md text-primary hover:bg-surface-container-high transition-colors" href="#">Ver Perfil</a>
+                                <button onclick="switchView('citas')" class="px-space-md py-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md shadow-sm transition-all flex items-center gap-1">
+                                    <span>Agendar Cita</span>
+                                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Interactive Hover Curtain -->
+                        <div class="absolute inset-0 bg-primary/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto flex flex-col items-center justify-center p-space-xl text-center text-on-primary">
+                            <span class="w-12 h-12 rounded-full bg-surface-container-lowest/10 flex items-center justify-center text-secondary-fixed mb-space-sm">
+                                <span class="material-symbols-outlined text-[28px]">child_care</span>
+                            </span>
+                            <h4 class="font-headline-sm text-headline-sm text-on-primary mb-1">Dra. Sofía Valenzuela</h4>
+                            <p class="font-body-sm text-body-sm text-primary-fixed max-w-sm mb-space-lg">Próximo turno disponible: <strong>Hoy a las 10:15 AM</strong>. Espacio adaptado libre de estrés para infantes.</p>
+                            <div class="flex flex-col sm:flex-row gap-space-md w-full max-w-xs">
+                                <button onclick="switchView('citas')" class="flex-1 h-11 inline-flex items-center justify-center bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg shadow-md transition-all">Agendar Cita</button>
+                                <a class="flex-1 h-11 inline-flex items-center justify-center bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-on-primary font-label-lg text-label-lg rounded-lg transition-colors" href="#">Ver Perfil</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Mensaje de sin resultados -->
+                <div id="no-results" class="hidden flex flex-col items-center justify-center py-16 text-center">
+                    <span class="material-symbols-outlined text-[48px] text-outline mb-space-sm">search_off</span>
+                    <h3 class="font-headline-sm text-headline-sm text-primary mb-1">No se encontraron especialistas</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Intenta modificar los filtros de búsqueda o restablecerlos para ver el directorio completo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. VISTA: SERVICIOS -->
+        <section id="view-servicios" class="view-section">
+            <div class="max-w-7xl mx-auto px-gutter py-space-xl">
+                <div class="max-w-2xl mb-space-xl">
+                    <span class="w-max px-space-md py-1 rounded-full bg-surface-container text-primary font-label-md text-label-md mb-space-sm inline-block">Tecnología Diagnóstica</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Servicios Clínicos y de Apoyo</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mt-space-sm">Infraestructura hospitalaria de vanguardia disponible para asegurar diagnósticos precisos sin salir de nuestras instalaciones.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+                    <div class="bg-surface-container-lowest p-space-lg rounded-xl border border-outline-variant/10 shadow-sm">
+                        <span class="material-symbols-outlined text-secondary text-[32px] mb-4">biotech</span>
+                        <h3 class="font-headline-sm text-headline-sm text-primary mb-2">Laboratorio Clínico</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Pruebas especializadas con entrega de resultados automatizada en el Portal del Paciente en menos de 24 horas.</p>
+                    </div>
+                    <div class="bg-surface-container-lowest p-space-lg rounded-xl border border-outline-variant/10 shadow-sm">
+                        <span class="material-symbols-outlined text-secondary text-[32px] mb-4">radiology</span>
+                        <h3 class="font-headline-sm text-headline-sm text-primary mb-2">Imagenología Avanzada</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Rayos X digitales, ultrasonido Doppler de alta resolución y resonancia magnética abierta.</p>
+                    </div>
+                    <div class="bg-surface-container-lowest p-space-lg rounded-xl border border-outline-variant/10 shadow-sm">
+                        <span class="material-symbols-outlined text-secondary text-[32px] mb-4">emergency_home</span>
+                        <h3 class="font-headline-sm text-headline-sm text-primary mb-2">Atención de Urgencias</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Servicio de emergencias médicas abierto las 24 horas del día, los 365 días del año con personal especializado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. VISTA: CITAS -->
+        <section id="view-citas" class="view-section">
+            <div class="max-w-4xl mx-auto px-gutter py-space-xl">
+                <div class="bg-surface-container-lowest p-space-xl rounded-2xl shadow-sm border border-outline-variant/20">
+                    <h2 class="font-headline-md text-headline-md text-primary mb-1">Agendar una Cita Médica</h2>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-xl">Completa el formulario para reservar tu turno con el especialista de tu preferencia.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('¡Cita solicitada exitosamente! Te enviaremos la confirmación por correo y SMS.'); switchView('inicio');" class="flex flex-col gap-space-lg">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                            <div class="flex flex-col gap-1">
+                                <label class="font-label-md text-label-md text-primary">Nombre Completo</label>
+                                <input required type="text" placeholder="Ej. Ana Lucía Gómez" class="h-11 px-space-md rounded-lg bg-surface-container-low border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-secondary/40">
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label class="font-label-md text-label-md text-primary">Correo Electrónico</label>
+                                <input required type="email" placeholder="correo@ejemplo.com" class="h-11 px-space-md rounded-lg bg-surface-container-low border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-secondary/40">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                            <div class="flex flex-col gap-1">
+                                <label class="font-label-md text-label-md text-primary">Especialidad o Doctor</label>
+                                <select class="h-11 px-space-md rounded-lg bg-surface-container-low border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-secondary/40">
+                                    <option>Dra. Elena Morales (Medicina Interna)</option>
+                                    <option>Dr. Carlos Méndez (Cardiología)</option>
+                                    <option>Dra. Sofía Valenzuela (Pediatría)</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label class="font-label-md text-label-md text-primary">Fecha Preferida</label>
+                                <input required type="date" class="h-11 px-space-md rounded-lg bg-surface-container-low border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-secondary/40">
+                            </div>
+                        </div>
+                        <div class="flex justify-end gap-space-md mt-space-md">
+                            <button type="button" onclick="switchView('nuestro-equipo')" class="px-space-lg py-2.5 rounded-lg bg-surface-container text-primary font-label-md text-label-md">Cancelar</button>
+                            <button type="submit" class="px-space-xl py-2.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md hover:bg-on-secondary-container transition-colors">Confirmar Cita</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. VISTA: BLOG SALUD -->
+        <section id="view-blog-salud" class="view-section">
+            <div class="max-w-7xl mx-auto px-gutter py-space-xl">
+                <div class="max-w-2xl mb-space-xl">
+                    <span class="w-max px-space-md py-1 rounded-full bg-surface-container text-primary font-label-md text-label-md mb-space-sm inline-block">Artículos Médicos</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Blog de Salud y Bienestar</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mt-space-sm">Consejos profesionales redactados por nuestros especialistas para mantener un estilo de vida saludable.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+                    <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-outline-variant/10 flex flex-col">
+                        <div class="h-48 bg-surface-container flex items-center justify-center text-outline">
+                            <span class="material-symbols-outlined text-[48px]">article</span>
+                        </div>
+                        <div class="p-space-lg flex flex-col flex-1 justify-between">
+                            <div>
+                                <span class="font-label-sm text-label-sm text-secondary font-semibold">Prevención · 10 Sep 2026</span>
+                                <h3 class="font-headline-sm text-headline-sm text-primary mt-1 mb-2">Claves para controlar la presión arterial de forma natural</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">Descubre los cambios en la dieta y la rutina de ejercicios recomendados por nuestros cardiólogos.</p>
+                            </div>
+                            <span class="mt-space-md text-primary font-label-md text-label-md flex items-center gap-1 cursor-pointer hover:text-secondary">Leer artículo completo <span class="material-symbols-outlined text-[16px]">arrow_forward</span></span>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-outline-variant/10 flex flex-col">
+                        <div class="h-48 bg-surface-container flex items-center justify-center text-outline">
+                            <span class="material-symbols-outlined text-[48px]">article</span>
+                        </div>
+                        <div class="p-space-lg flex flex-col flex-1 justify-between">
+                            <div>
+                                <span class="font-label-sm text-label-sm text-secondary font-semibold">Pediatría · 05 Sep 2026</span>
+                                <h3 class="font-headline-sm text-headline-sm text-primary mt-1 mb-2">Esquemas de vacunación escolar al día en Guatemala</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">Una guía completa para padres sobre las inmunizaciones necesarias antes de iniciar el ciclo escolar.</p>
+                            </div>
+                            <span class="mt-space-md text-primary font-label-md text-label-md flex items-center gap-1 cursor-pointer hover:text-secondary">Leer artículo completo <span class="material-symbols-outlined text-[16px]">arrow_forward</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. VISTA: CONTACTO -->
+        <section id="view-contacto" class="view-section">
+            <div class="max-w-7xl mx-auto px-gutter py-space-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-xl">
+                    <div>
+                        <span class="w-max px-space-md py-1 rounded-full bg-surface-container text-primary font-label-md text-label-md mb-space-sm inline-block">Estamos para servirte</span>
+                        <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-space-md">Ponte en contacto con nosotros</h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant mb-space-lg">Visítanos en nuestras instalaciones ubicadas en el corazón de la zona médica de la Ciudad de Guatemala.</p>
+                        
+                        <div class="flex flex-col gap-space-md font-body-md text-on-surface">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-secondary">location_on</span>
+                                <span>Diagonal 6, Zona 10, Ciudad de Guatemala</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-secondary">call</span>
+                                <span>+502 2345-6789 / +502 2200-1100</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-secondary">mail</span>
+                                <span>contacto@centromedicobienestar.gt</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-lowest p-space-xl rounded-2xl shadow-sm border border-outline-variant/20">
+                        <h3 class="font-headline-sm text-headline-sm text-primary mb-4">Envíanos un mensaje</h3>
+                        <form onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');" class="flex flex-col gap-space-md">
+                            <input required type="text" placeholder="Tu Nombre" class="h-11 px-space-md rounded-lg bg-surface-container-low border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-secondary/40">
+                            <input required type="email" placeholder="Tu Correo Electrónico" class="h-11 px-space-md rounded-lg bg-surface-container-low border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-secondary/40">
+                            <textarea required rows="4" placeholder="¿Cómo podemos ayudarte?" class="p-space-md rounded-lg bg-surface-container-low border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-secondary/40"></textarea>
+                            <button type="submit" class="h-11 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md hover:bg-on-secondary-container transition-colors">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JAVASCRIPT GLOBAL (NAVEGACIÓN POR VISTAS Y FILTROS) -->
+    <script>
+        function switchView(viewId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.view-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar la sección seleccionada
+            const target = document.getElementById('view-' + viewId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Actualizar clases activas en navegación superior
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('data-view') === viewId) {
+                    link.classList.add('bg-surface-container', 'text-primary', 'font-title-md');
+                    link.classList.remove('text-on-surface-variant');
+                } else {
+                    link.classList.remove('bg-surface-container', 'text-primary', 'font-title-md');
+                    link.classList.add('text-on-surface-variant');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configurar los clics en la barra de navegación superior
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const view = link.getAttribute('data-view');
+                    switchView(view);
+                });
+            });
+
+            // Vista por defecto inicial
+            switchView('nuestro-equipo');
+
+            // Lógica de filtrado en tiempo real (para la vista de Nuestro Equipo)
+            const searchInput = document.getElementById('search-input');
+            const specialtyFilter = document.getElementById('specialty-filter');
+            const dayFilter = document.getElementById('day-filter');
+            const resetBtn = document.getElementById('reset-filters');
+            const quickChips = document.querySelectorAll('.quick-chip');
+            const doctorsContainer = document.getElementById('doctors-container');
+            const doctorCards = doctorsContainer.querySelectorAll('.doctor-card');
+            const resultsCount = document.getElementById('results-count');
+            const noResults = document.getElementById('no-results');
+
+            function filterDoctors() {
+                const query = searchInput.value.toLowerCase().trim();
+                const selectedSpecialty = specialtyFilter.value;
+                const selectedDay = dayFilter.value;
+                
+                let visibleCount = 0;
+
+                doctorCards.forEach(card => {
+                    const name = card.getAttribute('data-name');
+                    const specialty = card.getAttribute('data-specialty');
+                    const days = card.getAttribute('data-days').split(',');
+                    const textContent = card.innerText.toLowerCase();
+
+                    const matchesSearch = query === '' || name.includes(query) || textContent.includes(query);
+                    const matchesSpecialty = selectedSpecialty === 'all' || specialty === selectedSpecialty;
+                    const matchesDay = selectedDay === 'all' || days.includes(selectedDay);
+
+                    if (matchesSearch && matchesSpecialty && matchesDay) {
+                        card.classList.remove('hidden');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                resultsCount.textContent = `Mostrando ${visibleCount} ${visibleCount === 1 ? 'doctor' : 'doctores'}`;
+                
+                if (visibleCount === 0) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                }
+            }
+
+            if (searchInput) searchInput.addEventListener('input', filterDoctors);
+            if (specialtyFilter) specialtyFilter.addEventListener('change', filterDoctors);
+            if (dayFilter) dayFilter.addEventListener('change', filterDoctors);
+
+            quickChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const specialty = chip.getAttribute('data-specialty');
+                    specialtyFilter.value = specialty;
+                    filterDoctors();
+                });
+            });
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    searchInput.value = '';
+                    specialtyFilter.value = 'all';
+                    dayFilter.value = 'all';
+                    filterDoctors();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
